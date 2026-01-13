@@ -1,274 +1,330 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Livro de Colorir Bíblico Infantil - 20 Desenhos A4</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; }
-        
-        /* ====== Tema ====== */
-        :root{
-            --azul-1: #4fc3f7;
-            --azul-2: #29b6f6;
-            --bg-1: #e3f2fd;
-            
-            --silenciado: #546e7a;
-            
-            --perigo-1: #ff6b6b;
-            --perigo-2: #ee5a52;
-            
-            --amarelo-1: #ffd54f;
-            --amarelo-2: #ffb300;
-            
-            --shadow-blue-soft: rgba(79, 195, 247, 0.15);
-            
-            /* Largura da "caixa" */
-            --page-max: 1200px;
-        }
-        
-        @media (max-width: 560px){
-            :root{
-                --page-max: calc(100% - 24px);
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Livro de Colorir Bíblico Infantil - 20 Desenhos A4</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
+
+    header {
+      background: #4fc3f7;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .banner {
+      width: 100%;
+      height: 400px;
+      background: #29b6f6 url('data:image/svg+xml;base64,...') center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .banner h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: bold; margin-bottom: 10px; }
+    .banner p { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+
+    .section { padding: 60px 0; }
+
+    .hero { background: white; text-align: center; padding: 80px 0; }
+    .hero img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+      color: white;
+      padding: 18px 40px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 8px 25px rgba(255,107,107,0.4);
+    }
+
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255,107,107,0.6); }
+
+    .features { background: #f8f9fa; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .feature {
+      text-align: center;
+      padding: 30px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .feature:hover { transform: translateY(-5px); }
+    .feature-icon { font-size: 3rem; color: #4fc3f7; margin-bottom: 20px; }
+
+    .price {
+      background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+      color: white;
+      text-align: center;
+    }
+
+    .price h2 { font-size: 3rem; margin-bottom: 10px; }
+    .price .old { text-decoration: line-through; font-size: 1.5rem; opacity: 0.8; }
+
+    footer {
+      background: #263238;
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    @media (max-width: 768px) {
+      .banner { height: 300px; }
+      .section { padding: 40px 0; }
+      .hero { padding: 55px 0; }
+    }
+
+    /* =========================
+       Depoimentos (NOVO)
+       ========================= */
+    .testimonials { background: #ffffff; }
+
+    .testimonials h2 {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      margin-bottom: 20px;
+      color: #4fc3f7;
+    }
+
+    .t-sub {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 30px;
+      color: #455a64;
+    }
+
+    .t-grid{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(220px, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .t-card{
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.06);
+      border-radius: 18px;
+      padding: 18px 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+      min-height: 170px;
+    }
+
+    .t-top{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .t-avatar{
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #e9eef3;
+      border: 2px solid rgba(79,195,247,.35);
+      flex: 0 0 auto;
+    }
+
+    .t-name{
+      font-weight: 700;
+      font-size: 1rem;
+      color: #263238;
+      line-height: 1.2;
+    }
+
+    .t-meta{
+      font-size: .9rem;
+      opacity: .75;
+      color: #455a64;
+    }
+
+    .t-stars{
+      color: #f7c948;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      margin: 6px 0 10px;
+      user-select: none;
+    }
+
+    .t-quote{
+      font-size: 0.98rem;
+      color: #37474f;
+    }
+
+    @media (max-width: 1024px){
+      .t-grid{ grid-template-columns: repeat(2, minmax(240px, 1fr)); }
+    }
+
+    /* No mobile vira uma fileira horizontal com snap */
+    @media (max-width: 600px){
+      .t-grid{
+        grid-template-columns: repeat(4, 85%);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+      }
+      .t-card{ scroll-snap-align: start; }
+      .t-grid::-webkit-scrollbar{ height: 8px; }
+      .t-grid::-webkit-scrollbar-thumb{ background: rgba(0,0,0,.15); border-radius: 10px; }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="page">
-        <header>
-            <div class="container">
-                <h2>📘 Livro de Colorir Bíblico 📘</h2>
-            </div>
-        </header>
-        
-        <!-- SECÇÃO HERO -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>20 Desenhos Bíblicos para Imprimir</h1>
-                    <p>As Paragens • PDF Digital • Pronto para Colorir</p>
-                    <a href="#comprar" class="btn btn-primary">GARANITA ACESSO AGORA</a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SECÇÃO DESENHOS EXCLUSIVOS -->
-        <section class="showcase">
-            <div class="container">
-                <div class="showcase-content">
-                    <h2>Desenhos Exclusivos para Crianças Aprenderem a Bíblia!</h2>
-                    <p>Você vai receber 20 desenhos lindos e exclusivos em formato A4 para imprimir. Cada página foi desenhada especialmente para ajudar crianças a aprender histórias bíblicas enquanto se divertem colorindo.</p>
-                    <a href="#comprar" class="btn btn-warning">GARANTIR ACESSO AGORA</a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SECÇÃO VEJA O QUE VEM -->
-        <section class="preview">
-            <div class="container">
-                <h2>Veja o que vem no PDF</h2>
-                <p>20 Ilustrações lindas pronta para impressão. Veja alguns exemplos dos desenhos que você vai receber:</p>
-                
-                <div class="gallery">
-                    <div class="gallery-item">
-                        <img src="/desenhos/01.png" alt="Desenho 1" />
-                        <p>ADÃO E EVA</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/desenhos/02.png" alt="Desenho 2" />
-                        <p>DILÚVIO</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/desenhos/03.png" alt="Desenho 3" />
-                        <p>ARK BÍBLICA</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/desenhos/04.png" alt="Desenho 4" />
-                        <p>JOSÉ</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/desenhos/05.png" alt="Desenho 5" />
-                        <p>MOISÉS</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/desenhos/06.png" alt="Desenho 6" />
-                        <p>JESUS</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/desenhos/07.png" alt="Desenho 7" />
-                        <p>MILAGRE</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="/desenhos/08.png" alt="Desenho 8" />
-                        <p>RESSURREIÇÃO</p>
-                    </div>
-                </div>
-                
-                <a href="#comprar" class="btn btn-primary">VER OS TODOS OS DESENHOS</a>
-            </div>
-        </section>
-        
-        <!-- SECÇÃO POR QUE COMPRAR -->
-        <section class="benefits">
-            <div class="container">
-                <h2>Por que Comprar Agora?</h2>
-                <p>Um kit educativo, seguro e pronto para usar em casa ou na sala de aula</p>
-                
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🎨</div>
-                        <h3>20 Desenhos Incríveis</h3>
-                        <p>Cada uma delas com um nível de dificuldade diferente, seguindo temas bíblicos importantes.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">📄</div>
-                        <h3>A4 Pronto para Imprimir</h3>
-                        <p>Todos os desenhos estão no tamanho A4, prontos para serem impressos em casa, escola ou gráfica.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">⚡</div>
-                        <h3>Download Imediato</h3>
-                        <p>Você recebe o arquivo PDF imediatamente após confirmar a compra, sem necessidade de esperar.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🌿</div>
-                        <h3>Como Funciona</h3>
-                        <p>É bem simples: 1) Pague aqui 2) Receba por e-mail 3) Imprima e cole em Breve.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SECÇÃO DEPOIMENTOS -->
-        <section class="testimonials">
-            <div class="container">
-                <h2>O que as mães estão dizendo</h2>
-                <p>Centenas de mães já estão usando nossos desenhos com seus filhos</p>
-                
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="avatar">👩</div>
-                            <div>
-                                <h4>Carla M.</h4>
-                                <p class="location">Rio de Janeiro, RJ</p>
-                            </div>
-                        </div>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testimonial-text">Meu filho amou! Está aprendendo sobre a Bíblia enquanto se diverte colorindo. Super recomendo!</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="avatar">👩</div>
-                            <div>
-                                <h4>Bianca B.</h4>
-                                <p class="location">Belo Horizonte, MG</p>
-                            </div>
-                        </div>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testimonial-text">Perfeito para usar na aula de educação religiosa! Os desenhos são lindos e as crianças adoram.</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="avatar">👩</div>
-                            <div>
-                                <h4>Marcia A.</h4>
-                                <p class="location">Curitiba, PR</p>
-                            </div>
-                        </div>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testimonial-text">Qualidade excelente! Vale cada centavo investido. Já comprei 3 vezes para diferentes idade.</p>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-header">
-                            <div class="avatar">👩</div>
-                            <div>
-                                <h4>Juliana N.</h4>
-                                <p class="location">Salvador, BA</p>
-                            </div>
-                        </div>
-                        <div class="stars">⭐⭐⭐⭐⭐</div>
-                        <p class="testimonial-text">Minha filha usa todo dia! É um ótimo passatempo e ela está aprendendo valores cristãos.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SECÇÃO FAQ -->
-        <section class="faq">
-            <div class="container">
-                <h2>Perguntas frequentes</h2>
-                <p>Temos certeza de que você encontrará a resposta aqui</p>
-                
-                <div class="faq-grid">
-                    <details>
-                        <summary>💬 O que é o PDF?</summary>
-                        <p>É um arquivo digital contendo 20 desenhos em alta qualidade, prontos para imprimir em tamanho A4.</p>
-                    </details>
-                    <details>
-                        <summary>⏱️ Posso acessar imediatamente?</summary>
-                        <p>Sim! Após a confirmação do pagamento, você receberá o link de download por e-mail.</p>
-                    </details>
-                    <details>
-                        <summary>🖨️ Qual é o tamanho da fonte?</summary>
-                        <p>Os desenhos estão otimizados para impressoras comuns de casa e podem ser impressos em A4 normal.</p>
-                    </details>
-                    <details>
-                        <summary>📱 Preciso de impressora?</summary>
-                        <p>Sim, você precisará de uma impressora para imprimir os desenhos. Também é possível usar de forma digital em tablets.</p>
-                    </details>
-                    <details>
-                        <summary>💳 Qual é a forma de pagamento?</summary>
-                        <p>Aceitamos cartão de crédito, débito e PIX. Todas as transações são 100% seguras.</p>
-                    </details>
-                    <details>
-                        <summary>🎁 Há algum bônus?</summary>
-                        <p>Sim! Toda compra acompanha um guia de atividades complementares para potencializar o aprendizado.</p>
-                    </details>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SECÇÃO CALL TO ACTION FINAL -->
-        <section class="cta-final" id="comprar">
-            <div class="container">
-                <div class="cta-content">
-                    <p class="cta-label">OFERTA POR TEMPO LIMITADO</p>
-                    <h2>Garanta agora e imprima hoje mesmo</h2>
-                    <p>Limitado a apenas 100 unidades por mês</p>
-                    <div class="price-section">
-                        <div class="price-display">
-                            <span class="currency">R$</span>
-                            <span class="value">9.90</span>
-                        </div>
-                        <a href="#" class="btn btn-cta">QUERO MEU PDF AGORA</a>
-                        <p class="guarantee">100% de garantia ou seu dinheiro de volta em 7 dias</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <footer>
-            <div class="container">
-                <p>© 2025 Livros de Colorir Bíblicos. Todos os direitos reservados. | <a href="/privacidade">Política de Privacidade</a> | <a href="/termos">Termos de Uso</a></p>
-            </div>
-        </footer>
+  <header>
+    <div class="container">
+      <h2>📖 Livros de Colorir Bíblicos 📖</h2>
     </div>
-    
-    <script>
-        // Script para abrir/fechar FAQ
-        document.querySelectorAll('details').forEach(detail => {
-            detail.addEventListener('toggle', function() {
-                if (this.open) {
-                    document.querySelectorAll('details[open]').forEach(openDetail => {
-                        if (openDetail !== this) openDetail.open = false;
-                    });
-                }
-            });
-        });
-    </script>
+  </header>
+
+  <section class="banner">
+    <h1>20 Desenhos Bíblicos para Imprimir</h1>
+    <p>A4 Paisagem • PDF Digital • Pronto para Colorir!</p>
+  </section>
+
+  <section class="hero">
+    <div class="container">
+      <img src="sua-capa-gerada.jpg" alt="Capa Livro Colorir Bíblico" width="600" />
+      <h2>Desenhos Exclusivos para Crianças Aprenderem a Bíblia!</h2>
+      <p>Histórias como Arca de Noé, Jesus com Crianças, Davi e Golias... Tudo em line art limpo, pronto pra imprimir em casa!</p>
+      <a href="COLE_AQUI_SEU_LINK_CAKTO_CHECKOUT" class="btn" target="_blank">Comprar por R$7,90 → OFERTA ESPECIAL!</a>
+    </div>
+  </section>
+
+  <!-- Depoimentos (NOVO) -->
+  <section class="testimonials section">
+    <div class="container">
+      <h2>O que as mães estão dizendo</h2>
+      <p class="t-sub">Depoimentos rápidos de quem já imprimiu e colocou as crianças pra colorir na hora.</p>
+
+      <div class="t-grid">
+        <article class="t-card">
+          <div class="t-top">
+            <div class="t-avatar" aria-hidden="true"></div>
+            <div>
+              <div class="t-name">Camila R.</div>
+              <div class="t-meta">Mãe do Miguel (5 anos)</div>
+            </div>
+          </div>
+          <div class="t-stars" aria-label="Avaliação 5 de 5">★★★★★</div>
+          <p class="t-quote">“Meu filho amou. Imprimi e ele já quis fazer todos.”</p>
+        </article>
+
+        <article class="t-card">
+          <div class="t-top">
+            <div class="t-avatar" aria-hidden="true"></div>
+            <div>
+              <div class="t-name">Priscila S.</div>
+              <div class="t-meta">Mãe da Lara (6 anos)</div>
+            </div>
+          </div>
+          <div class="t-stars" aria-label="Avaliação 5 de 5">★★★★★</div>
+          <p class="t-quote">“Foi a atividade mais fácil do dia. Ela ficou concentrada e feliz.”</p>
+        </article>
+
+        <article class="t-card">
+          <div class="t-top">
+            <div class="t-avatar" aria-hidden="true"></div>
+            <div>
+              <div class="t-name">Renata A.</div>
+              <div class="t-meta">Mãe do Theo (4 anos)</div>
+            </div>
+          </div>
+          <div class="t-stars" aria-label="Avaliação 5 de 5">★★★★★</div>
+          <p class="t-quote">“Os traços são bem limpos. Imprime perfeito na impressora comum.”</p>
+        </article>
+
+        <article class="t-card">
+          <div class="t-top">
+            <div class="t-avatar" aria-hidden="true"></div>
+            <div>
+              <div class="t-name">Juliana M.</div>
+              <div class="t-meta">Mãe do Pedro (7 anos)</div>
+            </div>
+          </div>
+          <div class="t-stars" aria-label="Avaliação 5 de 5">★★★★★</div>
+          <p class="t-quote">“Valeu cada centavo. Já virou rotina depois da escola.”</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="features section">
+    <div class="container">
+      <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: #4fc3f7;">Por que Comprar Agora?</h2>
+
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">🖍️</div>
+          <h3>20 Desenhos Únicos</h3>
+          <p>Line art médio-grosso, rostos simples, muito espaço pra colorir.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">📄</div>
+          <h3>A4 Paisagem Perfeito</h3>
+          <p>Impressão profissional, PDF otimizado pra qualquer impressora.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Download Imediato</h3>
+          <p>Área de membros Cakto — acessa pelo celular em segundos!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="price section">
+    <div class="container">
+      <h2>🎉 OFERTA por Tempo Limitado!</h2>
+      <p class="old">De R$29,90</p>
+      <h2>R$ <span style="font-size: 4rem;">7,90</span></h2>
+      <a href="COLE_AQUI_SEU_LINK_CAKTO_CHECKOUT" class="btn" style="background: #ffeb3b; color: #333; margin-top: 20px;" target="_blank">GARANTA SEU PDF AGORA →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Livro de Colorir Bíblico. Vendido via Cakto. Contato: seu-email@exemplo.com</p>
+    </div>
+  </footer>
 </body>
 </html>
